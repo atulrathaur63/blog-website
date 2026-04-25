@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --bg-color: #faf8f4;      /* cream */
+  --surface-color: #ffffff;
+  --surface-secondary: #f2ede4; /* parchment */
+  --text-primary: #2a2520;   /* ink-950 */
+  --text-secondary: #655847; /* ink-700 */
+  --text-muted: #a0937b;     /* ink-400 */
+  --border-color: rgba(42, 37, 32, 0.1);
+  --accent-color: #c84b31;
+  --accent-soft: rgba(200, 75, 49, 0.1);
+}
+
+.dark {
+  --bg-color: #0c0b0a;      /* deep midnight */
+  --surface-color: #141211;
+  --surface-secondary: #1a1715;
+  --text-primary: #edeae3;   /* ink-100 */
+  --text-secondary: #bdb4a2; /* ink-300 */
+  --text-muted: #7a6c55;     /* ink-600 */
+  --border-color: rgba(237, 234, 227, 0.1);
+  --accent-color: #e8634d;   /* slightly brighter for dark mode */
+  --accent-soft: rgba(232, 99, 77, 0.15);
+}
+
+/* ── Base Styles ───────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased selection:bg-accent/30 transition-colors duration-500 overflow-x-hidden;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-feature-settings: "liga" 1, "kern" 1, "ss01" 1;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+    color: var(--text-primary);
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2;
+    --tw-ring-offset-color: var(--bg-color);
+  }
+}
+
+/* ── Component Layer ───────────────────────────────────────────────────────── */
+@layer components {
+  .divider {
+    @apply flex items-center gap-4 my-12 opacity-50;
+  }
+  .divider::before, .divider::after {
+    content: "";
+    @apply flex-1 h-[1px];
+    background-color: var(--border-color);
+  }
+
+  .prose-blog {
+    @apply max-w-none transition-colors duration-500;
+    line-height: 1.85;
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+  }
+  
+  .prose-blog h1, .prose-blog h2, .prose-blog h3 {
+    @apply font-serif mt-14 mb-8 tracking-tight;
+    color: var(--text-primary);
+  }
+  
+  .prose-blog h2 { @apply text-4xl font-bold; }
+  .prose-blog h3 { @apply text-2xl font-semibold; }
+  
+  .prose-blog p { @apply mb-8; }
+  
+  .prose-blog a { 
+    @apply underline underline-offset-4 decoration-accent/30 hover:decoration-accent transition-all duration-300;
+    color: var(--accent-color);
+  }
+  
+  .prose-blog blockquote {
+    @apply border-l-4 pl-10 py-6 my-12 italic rounded-r-2xl font-serif text-xl border-accent;
+    background-color: var(--surface-secondary);
+    color: var(--text-primary);
+  }
+  
+  .prose-blog pre {
+    @apply rounded-2xl p-8 my-12 overflow-x-auto font-mono text-[0.95rem] shadow-2xl border border-white/5;
+    background-color: #000000;
+    color: #edeae3;
+  }
+  
+  .prose-blog code {
+    @apply rounded px-2 py-0.5 font-mono text-[0.875em] border;
+    background-color: var(--surface-secondary);
+    color: var(--accent-color);
+    border-color: var(--border-color);
+  }
+  
+  .prose-blog img {
+    @apply rounded-[2rem] w-full my-16 shadow-2xl hover:scale-[1.01] transition-transform duration-700;
+  }
+  
+  .prose-blog ul { @apply list-disc list-outside ml-8 mb-8 space-y-3; }
+  .prose-blog ol { @apply list-decimal list-outside ml-8 mb-8 space-y-3; }
+
+  .premium-card {
+    @apply rounded-3xl border transition-all duration-700 overflow-hidden;
+    background-color: var(--surface-color);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 30px -4px rgba(0,0,0,0.05);
+  }
+  .premium-card:hover {
+    @apply -translate-y-2;
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 60px -12px rgba(0,0,0,0.2);
+  }
+
+  .tag {
+    @apply inline-flex items-center px-5 py-2 text-[0.65rem] font-black tracking-[0.2em] uppercase rounded-full border transition-colors;
+    background-color: var(--surface-secondary);
+    color: var(--text-muted);
+    border-color: var(--border-color);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-3 px-10 py-4 text-white
+           font-bold rounded-full hover:shadow-2xl hover:shadow-accent/40 
+           active:scale-95 transition-all duration-300;
+    background-color: var(--accent-color);
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-3 px-10 py-4 border-2
+           font-bold rounded-full hover:bg-accent hover:text-white hover:border-accent
+           active:scale-95 transition-all duration-500;
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+  }
+
+  .input {
+    @apply w-full px-6 py-4 rounded-2xl border transition-all duration-500;
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+  }
+  .input:focus {
+    @apply outline-none ring-2 ring-accent border-transparent shadow-xl shadow-accent/5;
+  }
+}
+
+/* ── Custom Utilities ──────────────────────────────────────────────────────── */
+.glass {
+  @apply backdrop-blur-xl border-white/5;
+  background-color: rgba(var(--bg-color-rgb), 0.7);
+}
+
+.bg-surface { background-color: var(--surface-color); }
+.bg-surface-secondary { background-color: var(--surface-secondary); }
+.text-muted { color: var(--text-muted); }
+
+/* ── Quill Editor Overrides ────────────────────────────────────────────────── */
+.ql-editor {
+  min-height: 500px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  padding: 3rem;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+}
+.ql-toolbar.ql-snow {
+  @apply border-b-0 rounded-t-[2.5rem] p-6 transition-colors duration-500;
+  background-color: var(--surface-secondary);
+  border-color: var(--border-color);
+}
+.ql-container.ql-snow {
+  @apply rounded-b-[2.5rem] border-t transition-colors duration-500;
+  border-color: var(--border-color);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background-color: var(--bg-color); }
+::-webkit-scrollbar-thumb { 
+  @apply rounded-full border-[3px];
+  background-color: var(--text-muted);
+  border-color: var(--bg-color);
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--accent-color); }
+
+/* ── Animations ───────────────────────────────────────────────────────────── */
+.animate-delay-100 { animation-delay: 150ms; }
+.animate-delay-200 { animation-delay: 300ms; }
+.animate-delay-300 { animation-delay: 450ms; }
