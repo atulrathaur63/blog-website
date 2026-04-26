@@ -28,7 +28,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="max-w-4xl">
+    <div className="max-w-auto">
       {/* ── Header ─────────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-3 mb-8">
         <Link
@@ -40,7 +40,7 @@ const CreatePost = () => {
           </svg>
         </Link>
         <div>
-          <h1 className="font-serif text-3xl text-ink-950">Create New Post</h1>
+          <h1 className="font-sans text-3xl text-ink-950">Create New Post</h1>
           <p className="text-ink-500 text-sm mt-0.5">Fill in the details below to publish a new post.</p>
         </div>
       </div>

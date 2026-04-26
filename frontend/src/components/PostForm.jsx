@@ -112,12 +112,12 @@ const PostForm = ({ initialData = {}, onSubmit, isSubmitting, submitLabel = "Pub
             value={formData.title}
             onChange={handleChange}
             placeholder="Enter a compelling title..."
-            className="input text-lg font-serif"
+            className="input text-lg font-sans"
             required
           />
           {/* Slug preview */}
           {formData.title && (
-            <p className="text-xs text-ink-400 mt-1.5 font-mono">
+            <p className="text-xs text-ink-400 mt-1.5 font-sans">
               Slug: <span className="text-ink-600">/{previewSlug}</span>
             </p>
           )}
@@ -165,7 +165,7 @@ const PostForm = ({ initialData = {}, onSubmit, isSubmitting, submitLabel = "Pub
 
           {/* Image preview */}
           {formData.featuredImage && (
-            <div className="relative mb-3 rounded-lg overflow-hidden h-40 bg-ink-100">
+            <div className="relative mb-3 rounded-2xl overflow-hidden h-40 bg-slate-100">
               <img
                 src={formData.featuredImage}
                 alt="Featured"
@@ -255,11 +255,11 @@ const PostForm = ({ initialData = {}, onSubmit, isSubmitting, submitLabel = "Pub
                   onChange={handleChange}
                   className="sr-only"
                 />
-                <div className={`w-11 h-6 rounded-full transition-all ${formData.published ? "bg-green-500" : "bg-ink-200"}`}>
-                  <div className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${formData.published ? "translate-x-5" : "translate-x-0"}`} />
+                <div className={`w-11 h-6 rounded-full transition-all ${formData.published ? "bg-indigo-500" : "bg-slate-200"}`}>
+                  <div className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${formData.published ? "translate-x-5" : "translate-x-0"}`} />
                 </div>
               </div>
-              <span className={`text-sm font-medium ${formData.published ? "text-green-700" : "text-ink-500"}`}>
+              <span className={`text-sm font-semibold ${formData.published ? "text-indigo-600" : "text-slate-500"}`}>
                 {formData.published ? "Published" : "Draft"}
               </span>
             </label>

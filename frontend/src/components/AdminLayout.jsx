@@ -11,7 +11,7 @@ const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen bg-cream overflow-hidden">
+    <div className="flex h-screen bg-slate-50 overflow-hidden">
       {/* ── Mobile overlay ───────────────────────────────────────────────────── */}
       {sidebarOpen && (
         <div
@@ -32,17 +32,17 @@ const AdminLayout = () => {
       {/* ── Main Content ─────────────────────────────────────────────────────── */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Top bar (mobile only) */}
-        <header className="lg:hidden bg-white/80 backdrop-blur-md border-b border-ink-100 px-6 h-16 flex items-center gap-4 flex-shrink-0 relative z-10">
+        <header className="lg:hidden bg-slate-900 text-white border-b border-slate-800 px-6 h-16 flex items-center gap-4 flex-shrink-0 relative z-10">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="w-10 h-10 flex items-center justify-center bg-ink-100 rounded-xl text-ink-700 hover:text-accent transition-colors"
+            className="w-10 h-10 flex items-center justify-center bg-slate-800 rounded-xl text-slate-300 hover:text-white transition-colors"
             aria-label="Open sidebar"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <span className="font-serif text-xl font-black text-ink-950 tracking-tight">Admin Dashboard</span>
+          <span className="font-sans text-lg font-bold text-white">Admin Panel</span>
         </header>
 
         {/* Page content area with custom scrollbar behavior */}

@@ -6,11 +6,15 @@ const cors = require("cors");
 const path = require("path");
 const connectDB = require("./config/db");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
+const { trackVisit } = require("./middleware/analyticsMiddleware");
 
 // ── Connect to MongoDB ────────────────────────────────────────────────────────
 connectDB();
 
 const app = express();
+
+// ── Analytics Middleware ──────────────────────────────────────────────────────
+app.use(trackVisit);
 
 // ── CORS Configuration ────────────────────────────────────────────────────────
 const corsOptions = {
@@ -31,6 +35,8 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // ── API Routes ────────────────────────────────────────────────────────────────
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/posts", require("./routes/postRoutes"));
+app.use("/api/analytics", require("./routes/analyticsRoutes"));
+app.use("/api/misc", require("./routes/miscRoutes"));
 
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get("/api/health", (req, res) => {

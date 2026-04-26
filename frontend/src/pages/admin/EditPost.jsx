@@ -72,7 +72,7 @@ const EditPost = () => {
           </svg>
         </Link>
         <div>
-          <h1 className="font-serif text-3xl text-ink-950">Edit Post</h1>
+          <h1 className="font-sans text-3xl text-ink-950">Edit Post</h1>
           <p className="text-ink-500 text-sm mt-0.5 truncate max-w-xs md:max-w-none">
             Editing: <span className="text-ink-700 font-medium">{post?.title}</span>
           </p>

@@ -52,6 +52,10 @@ const postSchema = new mongoose.Schema(
       type: Number,       // Estimated read time in minutes (auto-calculated)
       default: 1,
     },
+    views: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,     // Adds createdAt and updatedAt automatically
@@ -86,7 +90,6 @@ postSchema.pre("save", async function (next) {
 });
 
 // ── Index for fast slug and date lookups ──────────────────────────────────────
-postSchema.index({ slug: 1 });
 postSchema.index({ createdAt: -1 });
 postSchema.index({ published: 1, createdAt: -1 });
 

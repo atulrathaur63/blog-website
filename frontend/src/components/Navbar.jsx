@@ -23,8 +23,7 @@ const Navbar = () => {
   const blogName = import.meta.env.VITE_BLOG_NAME || "Ink & Thought";
 
   const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("theme") === "dark" ||
-    (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    localStorage.getItem("theme") !== "light"
   );
 
   useEffect(() => {
@@ -39,11 +38,10 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-        scrolled
-          ? "py-3 bg-cream/80 dark:bg-ink-950/80 backdrop-blur-md shadow-lg shadow-ink-950/5 border-b border-ink-100/40"
-          : "py-6 bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${scrolled
+        ? "py-3 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-2xl shadow-slate-950/5 border-b border-slate-200/50 dark:border-slate-800/50"
+        : "py-6 bg-transparent"
+        }`}
     >
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
@@ -51,11 +49,8 @@ const Navbar = () => {
           to="/"
           className="group flex items-center gap-3"
         >
-          <div className="w-10 h-10 bg-ink-950 dark:bg-accent rounded-xl flex items-center justify-center text-cream font-serif text-xl font-black group-hover:rotate-6 transition-all duration-300">
-            {blogName.charAt(0)}
-          </div>
-          <span className="font-serif text-2xl font-black text-ink-950 dark:text-cream tracking-tighter">
-             {blogName}
+          <span className="flex items-center">
+            <img src="/Logo.png" alt="Logo" className="h-8 w-auto object-contain" />
           </span>
         </Link>
 
@@ -63,18 +58,17 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           <Link
             to="/"
-            className={`text-[0.7rem] font-black uppercase tracking-[0.2em] transition-all hover:text-accent relative group/link ${
-              location.pathname === "/" ? "text-accent" : "text-ink-500 dark:text-ink-300"
-            }`}
+            className={`text-[0.7rem] font-bold uppercase tracking-[0.2em] transition-all hover:text-accent relative group/link ${location.pathname === "/" ? "text-accent" : "text-slate-500 dark:text-slate-400"
+              }`}
           >
             Archive
             <span className={`absolute -bottom-1 left-0 h-[2px] bg-accent transition-all duration-300 ${location.pathname === "/" ? "w-full" : "w-0 group-hover/link:w-full"}`} />
           </Link>
-          
+
           {/* Theme Toggle */}
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-ink-100 dark:bg-ink-800 text-ink-600 dark:text-ink-300 hover:text-accent transition-all"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-accent transition-all"
             aria-label="Toggle theme"
           >
             {darkMode ? (
@@ -84,18 +78,18 @@ const Navbar = () => {
             )}
           </button>
 
-          <Link
+          {/* <Link
             to="/admin/login"
             className="btn-primary !px-6 !py-2.5 !text-[0.65rem] !tracking-[0.1em]"
           >
             Admin Panel
-          </Link>
+          </Link> */}
         </div>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden w-10 h-10 flex items-center justify-center bg-ink-100 rounded-full text-ink-700 hover:text-accent transition-colors"
+          className="md:hidden w-10 h-10 flex items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-300 hover:text-accent transition-colors"
           aria-label="Toggle menu"
         >
           {menuOpen ? (
@@ -111,14 +105,13 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Menu */}
-      <div 
-        className={`md:hidden absolute top-full left-0 right-0 bg-cream/95 backdrop-blur-xl border-b border-ink-100 shadow-2xl transition-all duration-500 overflow-hidden ${
-          menuOpen ? "max-h-[300px] py-8 opacity-100" : "max-h-0 py-0 opacity-0"
-        }`}
+      <div
+        className={`md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 shadow-2xl transition-all duration-500 overflow-hidden ${menuOpen ? "max-h-[300px] py-8 opacity-100" : "max-h-0 py-0 opacity-0"
+          }`}
       >
         <div className="px-6 flex flex-col gap-6 items-center">
-            <Link to="/" className="text-xl font-serif font-black text-ink-950">Archive</Link>
-            <Link to="/admin/login" className="btn-primary w-full">Admin Panel</Link>
+          <Link to="/" className="text-xl font-bold text-slate-900 dark:text-white">Archive</Link>
+          {/* <Link to="/admin/login" className="btn-primary w-full">Admin Panel</Link> */}
         </div>
       </div>
     </header>

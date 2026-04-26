@@ -15,9 +15,8 @@ const BlogCard = ({ post, featured = false }) => {
 
   return (
     <article
-      className={`group premium-card ${
-        featured ? "col-span-full md:grid md:grid-cols-2 md:gap-0" : ""
-      }`}
+      className={`group premium-card !rounded-[2.5rem] ${featured ? "col-span-full md:grid md:grid-cols-2 md:gap-0" : ""
+        }`}
     >
       {/* Featured Image */}
       <Link to={`/blog/${post.slug}`} className="block overflow-hidden relative">
@@ -47,9 +46,9 @@ const BlogCard = ({ post, featured = false }) => {
         {/* Category + Read time */}
         <div className="flex items-center gap-4 mb-6">
           {post.category && (
-            <span className="tag">{post.category}</span>
+            <span className="tag !text-slate-800 dark:!text-slate-200">{post.category}</span>
           )}
-          <span className="flex items-center gap-1.5 text-[0.7rem] font-bold text-ink-400 uppercase tracking-wider">
+          <span className="flex items-center gap-1.5 text-[0.7rem] font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -60,9 +59,8 @@ const BlogCard = ({ post, featured = false }) => {
         {/* Title */}
         <Link to={`/blog/${post.slug}`}>
           <h2
-            className={`font-serif font-bold text-primary leading-tight mb-4 group-hover:text-accent transition-colors duration-300 ${
-              featured ? "text-3xl md:text-5xl" : "text-2xl"
-            }`}
+            className={`font-sans font-extrabold leading-tight mb-4 bg-[linear-gradient(360deg,_rgba(79,70,229,1)_0%,_rgba(237,124,83,1)_100%)] bg-clip-text text-transparent drop-shadow-sm pb-1 transition-opacity duration-300 group-hover:opacity-80 ${featured ? "text-3xl md:text-5xl" : "text-2xl"
+              }`}
           >
             {post.title}
           </h2>
@@ -70,7 +68,7 @@ const BlogCard = ({ post, featured = false }) => {
 
         {/* Excerpt */}
         {post.excerpt && (
-          <p className={`text-muted leading-relaxed mb-8 line-clamp-3 ${featured ? "text-lg md:text-xl md:max-w-md" : "text-sm"}`}>
+          <p className={`text-slate-800 dark:text-slate-200 leading-relaxed mb-8 line-clamp-3 ${featured ? "text-base md:text-lg md:max-w-md" : "text-sm"}`}>
             {post.excerpt}
           </p>
         )}
@@ -78,16 +76,16 @@ const BlogCard = ({ post, featured = false }) => {
         {/* Footer: date + read more */}
         <div className="flex items-center justify-between mt-auto pt-6 border-t border-ink-100/60">
           <div className="flex items-center gap-2">
-             <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-             <time className="text-xs text-ink-500 font-bold uppercase tracking-tighter">{formattedDate}</time>
+            <div className="w-2 h-2 rounded-full bg-accent/40" />
+            <time className="text-xs text-slate-800 dark:text-slate-200 font-bold uppercase tracking-tighter">{formattedDate}</time>
           </div>
-          
+
           <Link
             to={`/blog/${post.slug}`}
-            className="group/btn text-xs font-bold text-primary uppercase tracking-[0.1em] flex items-center gap-2"
+            className="group/btn text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-[0.1em] flex items-center gap-2"
           >
             Read Article
-            <span className="w-8 h-[1px] bg-muted/30 group-hover/btn:w-12 group-hover/btn:bg-accent transition-all duration-300" />
+            <span className="w-8 h-[1px] bg-slate-300 dark:bg-slate-700 group-hover/btn:w-12 group-hover/btn:bg-accent transition-all duration-300" />
           </Link>
         </div>
       </div>

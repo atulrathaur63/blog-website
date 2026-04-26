@@ -28,10 +28,10 @@ const PublicLayout = () => (
 
 // 404 page
 const NotFound = () => (
-  <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4">
-    <div className="font-serif font-bold text-ink-100 select-none leading-none text-9xl">404</div>
-    <h1 className="font-serif text-2xl md:text-3xl text-ink-700 -mt-4">Page Not Found</h1>
-    <p className="text-ink-500 text-sm text-center max-w-sm">
+  <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 bg-white dark:bg-slate-950">
+    <div className="font-sans font-bold text-slate-100 dark:text-slate-900 select-none leading-none text-9xl">404</div>
+    <h1 className="font-sans text-2xl md:text-3xl text-slate-900 dark:text-white -mt-4">Page Not Found</h1>
+    <p className="text-slate-500 text-sm text-center max-w-sm">
       The page you're looking for doesn't exist or may have been moved.
     </p>
     <Link to="/" className="btn-primary mt-4">← Back to Home</Link>
@@ -47,16 +47,17 @@ const App = () => {
           toastOptions={{
             duration: 3500,
             style: {
-              background: "#2a2520",
-              color: "#faf8f4",
+              background: "#0f172a",
+              color: "#f8fafc",
               fontSize: "14px",
-              borderRadius: "10px",
-              padding: "12px 16px",
-              fontFamily: "'DM Sans', system-ui, sans-serif",
-              boxShadow: "0 10px 40px rgba(0,0,0,0.25)",
+              borderRadius: "16px",
+              padding: "12px 20px",
+              fontFamily: "'Sora', sans-serif",
+              boxShadow: "0 20px 50px rgba(0,0,0,0.3)",
+              border: "1px solid rgba(255,255,255,0.1)",
             },
-            success: { iconTheme: { primary: "#4ade80", secondary: "#2a2520" } },
-            error:   { iconTheme: { primary: "#f87171", secondary: "#2a2520" } },
+            success: { iconTheme: { primary: "#4ade80", secondary: "#0f172a" } },
+            error:   { iconTheme: { primary: "#f87171", secondary: "#0f172a" } },
           }}
         />
         <Routes>

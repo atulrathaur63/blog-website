@@ -30,13 +30,12 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ink-950 flex items-center justify-center p-4">
-      {/* Background texture */}
-      <div className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}
-      />
+    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
+      {/* Modern geometric background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-accent/20 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] rounded-full bg-indigo-500/10 blur-[100px]" />
+      </div>
 
       <div className="relative w-full max-w-md">
         {/* Card */}
@@ -47,13 +46,13 @@ const Login = () => {
           <div className="px-8 py-10">
             {/* Header */}
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-ink-950 rounded-2xl mb-4">
-                <svg className="w-7 h-7 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-slate-950 rounded-2xl mb-4 shadow-xl shadow-accent/20">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8}
                     d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                 </svg>
               </div>
-              <h1 className="font-serif text-2xl font-semibold text-ink-950 mb-1">
+              <h1 className="font-sans text-2xl font-bold text-slate-900 mb-1">
                 Admin Login
               </h1>
               <p className="text-sm text-ink-500">
@@ -118,11 +117,11 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="btn-primary w-full justify-center py-3 text-sm mt-2"
+                className="w-full py-4 bg-slate-900 text-white font-bold rounded-2xl hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-slate-950/20"
               >
                 {loading ? (
                   <span className="flex items-center gap-2 justify-center">
-                    <span className="w-4 h-4 border-2 border-cream/30 border-t-cream rounded-full animate-spin" />
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     Signing in...
                   </span>
                 ) : (

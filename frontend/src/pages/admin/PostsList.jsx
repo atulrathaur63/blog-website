@@ -59,11 +59,11 @@ const PostsList = () => {
   };
 
   return (
-    <div className="max-w-5xl">
+    <div className="max-w-auto">
       {/* ── Header ─────────────────────────────────────────────────────────── */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="font-serif text-3xl text-ink-950 mb-1">All Posts</h1>
+          <h1 className="font-sans text-3xl text-ink-950 mb-1">All Posts</h1>
           <p className="text-ink-500 text-sm">{pagination.total} posts total</p>
         </div>
         <Link to="/admin/posts/new" className="btn-primary text-sm">
@@ -108,7 +108,7 @@ const PostsList = () => {
                     <tr key={post._id} className="hover:bg-ink-50/40 transition-colors">
                       <td className="px-5 py-4">
                         <p className="font-medium text-ink-900 line-clamp-1 max-w-xs">{post.title}</p>
-                        <p className="text-xs text-ink-400 mt-0.5 font-mono">/{post.slug}</p>
+                        <p className="text-xs text-ink-400 mt-0.5 font-sans">/{post.slug}</p>
                       </td>
                       <td className="px-4 py-4">
                         <span className="tag text-xs">{post.category || "General"}</span>
@@ -116,14 +116,13 @@ const PostsList = () => {
                       <td className="px-4 py-4">
                         <button
                           onClick={() => togglePublished(post)}
-                          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium transition-all hover:opacity-80 ${
-                            post.published
-                              ? "bg-green-100 text-green-700"
-                              : "bg-amber-100 text-amber-700"
-                          }`}
+                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm ${post.published
+                              ? "bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600"
+                              : "bg-slate-600 text-white hover:bg-slate-700 dark:bg-slate-500 dark:hover:bg-slate-600"
+                            }`}
                           title="Click to toggle"
                         >
-                          <span className={`w-1.5 h-1.5 rounded-full ${post.published ? "bg-green-500" : "bg-amber-500"}`} />
+                          <span className="w-1.5 h-1.5 rounded-full bg-white opacity-90" />
                           {post.published ? "Published" : "Draft"}
                         </button>
                       </td>
@@ -148,7 +147,7 @@ const PostsList = () => {
                           </a>
                           <Link
                             to={`/admin/posts/edit/${post._id}`}
-                            className="p-2 text-ink-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
+                            className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-lg transition-all"
                             title="Edit post"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -180,9 +179,8 @@ const PostsList = () => {
                 <div key={post._id} className="p-4">
                   <div className="flex items-start justify-between gap-3 mb-2">
                     <p className="font-medium text-ink-900 line-clamp-2 text-sm">{post.title}</p>
-                    <span className={`flex-shrink-0 text-xs px-2 py-1 rounded-full font-medium ${
-                      post.published ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"
-                    }`}>
+                    <span className={`flex-shrink-0 text-xs px-2 py-1 rounded-full font-medium ${post.published ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"
+                      }`}>
                       {post.published ? "Live" : "Draft"}
                     </span>
                   </div>
@@ -238,7 +236,7 @@ const PostsList = () => {
                   d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
             </div>
-            <h3 className="font-serif text-xl text-ink-950 mb-2">Delete Post?</h3>
+            <h3 className="font-sans text-xl text-ink-950 mb-2">Delete Post?</h3>
             <p className="text-sm text-ink-600 mb-6">
               Are you sure you want to delete{" "}
               <strong className="text-ink-800">"{confirmDelete.title}"</strong>?

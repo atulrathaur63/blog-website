@@ -50,20 +50,20 @@ const AdminSidebar = ({ onClose }) => {
   ];
 
   return (
-    <aside className="w-64 bg-ink-950 text-cream flex flex-col h-full">
+    <aside className="w-64 bg-slate-900 text-white flex flex-col h-full border-r border-slate-800">
       {/* Logo */}
       <div className="px-6 py-6 border-b border-ink-800">
         <div className="flex items-center justify-between">
-          <span className="font-serif text-lg font-semibold text-cream">Admin Panel</span>
+          <span className="font-sans text-lg font-bold text-white">Admin Panel</span>
           {onClose && (
-            <button onClick={onClose} className="text-ink-400 hover:text-cream p-1 lg:hidden">
+            <button onClick={onClose} className="text-slate-400 hover:text-white p-1 lg:hidden">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           )}
         </div>
-        <p className="text-xs text-ink-400 mt-1 truncate">{user?.email}</p>
+        <p className="text-xs text-slate-400 mt-1 truncate">{user?.email}</p>
       </div>
 
       {/* Navigation */}
@@ -76,8 +76,8 @@ const AdminSidebar = ({ onClose }) => {
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${
                 isActive
-                  ? "bg-accent text-white"
-                  : "text-ink-300 hover:bg-ink-800 hover:text-cream"
+                  ? "bg-accent text-white shadow-lg shadow-accent/20"
+                  : "text-slate-400 hover:bg-slate-800 hover:text-white"
               }`
             }
           >

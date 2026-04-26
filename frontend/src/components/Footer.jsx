@@ -10,16 +10,16 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
           <div className="text-center md:text-left">
-            <Link to="/" className="font-serif text-2xl font-black text-primary hover:text-accent transition-all">
+            <Link to="/" className="font-sans text-2xl font-extrabold bg-[linear-gradient(360deg,_rgba(79,70,229,1)_0%,_rgba(237,124,83,1)_100%)] bg-clip-text text-transparent drop-shadow-sm pb-1 transition-opacity hover:opacity-80">
               {blogName}
             </Link>
             <p className="text-muted text-sm mt-2 font-medium">
-                Deep explorations, long-form narratives, and digital sparks.
+              Deep explorations, long-form narratives, and digital sparks.
             </p>
           </div>
 
           {/* Links */}
-          <nav className="flex items-center gap-8 text-[0.65rem] font-black uppercase tracking-[0.2em] text-muted">
+          <nav className="flex items-center gap-8 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted">
             <Link to="/" className="hover:text-accent transition-colors">Archive</Link>
             <Link to="/admin/login" className="hover:text-accent transition-colors">Admin Panel</Link>
           </nav>
@@ -27,8 +27,8 @@ const Footer = () => {
 
         {/* Bottom line */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-[0.6rem] font-bold uppercase tracking-widest text-muted/60">
-           <span>© {year} {blogName}.</span>
-           <span className="md:text-right italic">A curated space for the curious mind.</span>
+          <span>© {year} {blogName}.</span>
+          <span className="md:text-right italic">A curated space for the curious mind.</span>
         </div>
       </div>
     </footer>

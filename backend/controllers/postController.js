@@ -76,7 +76,11 @@ const getAllPostsAdmin = asyncHandler(async (req, res) => {
 // @access  Public
 // ─────────────────────────────────────────────────────────────────────────────
 const getPostBySlug = asyncHandler(async (req, res) => {
-  const post = await Post.findOne({ slug: req.params.slug, published: true });
+  const post = await Post.findOneAndUpdate(
+    { slug: req.params.slug, published: true },
+    { $inc: { views: 1 } },
+    { new: true }
+  );
 
   if (!post) {
     res.status(404);
