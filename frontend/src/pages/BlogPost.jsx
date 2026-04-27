@@ -25,7 +25,7 @@ const BlogPost = () => {
 
     const parser = new DOMParser();
     const doc = parser.parseFromString(post.content, "text/html");
-    const hElements = Array.from(doc.querySelectorAll("h2, h3"));
+    const hElements = Array.from(doc.querySelectorAll("h2, h3,h4"));
 
     const extracted = hElements.map((h, i) => {
       const id = `heading-${i}`;
@@ -126,7 +126,7 @@ const BlogPost = () => {
 
       {/* ── Featured Image Hero ────────────────────────────────────────────── */}
       {post.featuredImage && (
-        <div className="relative w-full h-[60vh] overflow-hidden">
+        <div className="relative w-full h-screen overflow-hidden mt-[4rem]">
           <img
             src={post.featuredImage}
             alt={post.title}
@@ -152,12 +152,12 @@ const BlogPost = () => {
               {post.title}
             </h1>
 
-            <div className="flex items-center gap-6 text-[0.65rem] font-semibold uppercase tracking-widest text-slate-400">
+            <div className="flex items-center gap-6 text-[0.65rem] font-normal tracking-[0.2em] text-slate-500">
               <span className="flex items-center gap-2">
                 <div className="w-6 h-6 rounded-full bg-surface-secondary flex items-center justify-center">
                   <svg className="w-3 h-3 text-muted" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
                 </div>
-                Admin
+                {blogName}
               </span>
               <span className="text-slate-200 dark:text-slate-800">|</span>
               <time>{formattedDate}</time>
@@ -167,12 +167,12 @@ const BlogPost = () => {
           </div>
 
           {/* ── 3-Column Content Grid ────────────────────────────────────────── */}
-          <div className="flex flex-col lg:grid lg:grid-cols-[220px_1fr_250px] gap-12 py-16 border-b border-border">
+          <div className="flex flex-col lg:grid lg:grid-cols-[220px_1fr_250px] gap-5 py-16 border-b border-border">
 
             {/* [LEFT] Table of Contents */}
-            <aside className="hidden lg:block">
-              <div className="sticky top-32 space-y-6">
-                <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-muted border-b border-border pb-4">
+            <aside className="hidden lg:block border-r border-slate-200 dark:border-slate-800">
+              <div className="sticky top-32 space-y-6 ">
+                <h4 className="text-[0.50rem] font-bold uppercase tracking-[0.3em] text-slate-500 border-b border-border pb-4">
                   Table of Contents
                 </h4>
                 <nav className="space-y-1">
@@ -182,7 +182,7 @@ const BlogPost = () => {
                         key={h.id}
                         href={`#${h.id}`}
                         className={`block text-sm transition-all duration-300 py-1.5 border-l-2 pl-4 ${activeId === h.id
-                          ? "text-accent border-accent font-semibold bg-accent/5"
+                          ? "text-white border-accent font-semibold bg-accent/5"
                           : "text-muted border-transparent hover:text-primary hover:border-border"
                           } ${h.level === "h3" ? "ml-4 text-[0.8rem]" : ""}`}
                       >
@@ -251,7 +251,7 @@ const BlogPost = () => {
             </div>
 
             {/* [RIGHT] Category Blogs */}
-            <aside className="space-y-12">
+            <aside className="space-y-12 border-l border-slate-200 dark:border-slate-800 pl-6">
               <div className="sticky top-32 space-y-10">
                 {/* Category Posts */}
                 <div>

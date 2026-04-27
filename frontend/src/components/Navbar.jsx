@@ -38,9 +38,9 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${scrolled
-        ? "py-3 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-2xl shadow-slate-950/5 border-b border-slate-200/50 dark:border-slate-800/50"
-        : "py-6 bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled
+        ? "py-3 bg-white dark:bg-slate-950 shadow-xl border-b border-slate-200/50 dark:border-slate-800/50"
+        : "py-5 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 shadow-sm"
         }`}
     >
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
